@@ -1,0 +1,16 @@
+.black {
+  border: 1px solid black;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  margin: 3px;
+  background-color: black;
+}
+
+.pallet {
+  border: 1px solid black;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  margin: 3px;
+}
