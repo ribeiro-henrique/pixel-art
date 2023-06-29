@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div>
-      <h1>Pixel Art</h1>
+      <h1>Pixel Art 🎨</h1>
       <PixelGrid />
     </div>
   )
