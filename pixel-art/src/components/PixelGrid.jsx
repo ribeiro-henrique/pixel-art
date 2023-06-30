@@ -1,5 +1,5 @@
 import randomColor from "randomcolor";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/PixelGrid.css';
 
 
@@ -14,6 +14,24 @@ function PixelGrid() {
   const [pixelGrid, setPixelGrid] = useState(
     Array.from({ length: 672}, (_, i) => ({ id: i, backgroundColor: 'white' }))
   );
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 552; // Define a largura de tela que considera como celular
+      const gridLength = isMobile ? 63 : 672; // Define o tamanho do grid com base na condição de celular
+      setPixelGrid(
+        Array.from({ length: gridLength }, (_, i) => ({ id: i, backgroundColor: 'white' }))
+      );
+    };
+
+    handleResize(); // Executa a função uma vez no início
+    window.addEventListener('resize', handleResize); // Adiciona o evento de redimensionamento
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Remove o evento ao desmontar o componente
+    };
+  }, []);
+
 
   const [pickColors, setPickColors] = useState();
   console.log(pickColors);
@@ -43,6 +61,13 @@ function PixelGrid() {
       pixels[index].style.backgroundColor = 'white';
   }
 }
+
+  useEffect(() => {
+    const pixels = document.getElementsByClassName('gridizinho');
+    for (let index = 0; index < pixels.length; index += 1) {
+      pixels[index].style.backgroundColor = 'white';
+    }
+  }, []);
 
   return (
     <div>
