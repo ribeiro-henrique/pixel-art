@@ -18,7 +18,7 @@ function PixelGrid() {
   useEffect(() => {
     const handleResize = () => {
       const isMobile = window.innerWidth <= 552; // Define a largura de tela que considera como celular
-      const gridLength = isMobile ? 63 : 672; // Define o tamanho do grid com base na condição de celular
+      const gridLength = isMobile ? 60 : 672; // Define o tamanho do grid com base na condição de celular
       setPixelGrid(
         Array.from({ length: gridLength }, (_, i) => ({ id: i, backgroundColor: 'white' }))
       );
@@ -74,6 +74,7 @@ function PixelGrid() {
       
     <div className="main-colors">
       <div onClick={pickColor} style={{ backgroundColor: 'black' }} className="pallet" />
+      <div onClick={pickColor} style={{ backgroundColor: 'white' }} className="pallet" />
       <div onClick={pickColor} style={{ backgroundColor: randomColor() }} className="pallet" />
       <div onClick={pickColor} style={{ backgroundColor: randomColor() }} className="pallet" />
       <div onClick={pickColor} style={{ backgroundColor: randomColor() }} className="pallet" />
