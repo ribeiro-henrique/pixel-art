@@ -14,6 +14,9 @@ function PixelGrid() {
   const [pixelGrid, setPixelGrid] = useState(
     Array.from({ length: 49 }, (_, i) => i + 1)
   );
+
+  const [pickColors, setPickColors] = useState();
+  console.log(pickColors);
   
   function generateRandomColor() {
      var color = randomColor();
@@ -25,12 +28,21 @@ function PixelGrid() {
     setColor(newColor);
   }
 
+  function pickColor(e) {
+    // e.target.style.background
+    setPickColors(e.target.style.backgroundColor)
+  }
+
+  function clickGrid(e) {
+    e.target.style.backgroundColor = pickColors
+  }
+
   return (
     <div className="main-colors">
-      <div className="black" />
-      <div style={{ backgroundColor: randomColor() }} className="pallet" />
-      <div style={{ backgroundColor: randomColor() }} className="pallet" />
-      <div style={{ backgroundColor: randomColor() }} className="pallet" />
+      <div onClick={pickColor} style={{ backgroundColor: 'black' }} className="pallet" />
+      <div onClick={pickColor} style={{ backgroundColor: randomColor() }} className="pallet" />
+      <div onClick={pickColor} style={{ backgroundColor: randomColor() }} className="pallet" />
+      <div onClick={pickColor} style={{ backgroundColor: randomColor() }} className="pallet" />
       
     <div className="button-container">
       <button
@@ -50,8 +62,8 @@ function PixelGrid() {
           <div
             className="gridizinho"
             key={index}
+            onClick={clickGrid}
           >
-            oi
           </div>
         ))}
       </div>
