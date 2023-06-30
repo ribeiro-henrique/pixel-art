@@ -12,7 +12,7 @@ function PixelGrid() {
 
   // eslint-disable-next-line no-unused-vars
   const [pixelGrid, setPixelGrid] = useState(
-    Array.from({ length: 195 }, (_, i) => ({ id: i, backgroundColor: 'white' }))
+    Array.from({ length: 672}, (_, i) => ({ id: i, backgroundColor: 'white' }))
   );
 
   const [pickColors, setPickColors] = useState();
