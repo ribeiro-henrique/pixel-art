@@ -12,7 +12,7 @@ function PixelGrid() {
 
   // eslint-disable-next-line no-unused-vars
   const [pixelGrid, setPixelGrid] = useState(
-    Array.from({ length: 49 }, (_, i) => i + 1)
+    Array.from({ length: 195 }, (_, i) => ({ id: i, backgroundColor: 'white' }))
   );
 
   const [pickColors, setPickColors] = useState();
@@ -37,7 +37,16 @@ function PixelGrid() {
     e.target.style.backgroundColor = pickColors
   }
 
+  function eraseGrid() {
+    const pixels = document.getElementsByClassName('gridizinho');
+    for (let index = 0; index < pixels.length; index += 1) {
+      pixels[index].style.backgroundColor = 'white';
+  }
+}
+
   return (
+    <div>
+      
     <div className="main-colors">
       <div onClick={pickColor} style={{ backgroundColor: 'black' }} className="pallet" />
       <div onClick={pickColor} style={{ backgroundColor: randomColor() }} className="pallet" />
@@ -53,21 +62,36 @@ function PixelGrid() {
         <span
          className="sp"
         >
-         Radomizar!
+         Randomizar!
         </span>
       </button>
+      <button
+          data-label="Register"
+          className="rainbow-hover2"
+          onClick={eraseGrid}
+      >
+        <span
+         
+        >
+         ✗
+        </span>
+      </button>
+      
     </div>
       <div className="pixel-grid">
-        {pixelGrid.map((index) => (
+        {pixelGrid.map((e) => (
           <div
             className="gridizinho"
-            key={index}
+            key={e.id}
             onClick={clickGrid}
           >
           </div>
         ))}
       </div>
+      
     </div>
+    </div>
+    
   )
 
 }
